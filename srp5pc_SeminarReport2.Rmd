@@ -1,0 +1,38 @@
+---
+title: "Seminar Report 2"
+author: "Suchi Patel"
+output:
+  html_document:
+    df_print: paged
+---
+
+##"Towards Verified Artificial Intelligence"
+####Speaker: Professor Sanjit A. Seshia, Department of Electrical Engineering and Computer Sciences at the University of California, Berkeley
+#####10/26/18, 3:30pm-4:30pm
+
+Dr. Seshia's talk focused on creating a formal approach to the development of Verified Human Interfaces, Control, and Learning for Semi-Autonomous Systems (VeHICaL; http://vehical.org/). He began by discussing the growth of ML/AI in cyber-physical systems. For instance, there will be a projected 125 million AI-based systems for automatives in place by 2025. These systems are increasingly safety-critical, which makes the failure of autonomy in the real world a major problem. One of the most notable examples of this is the Uber accident in March 2018. 
+
+Dr. Seshia's research focuses on identifying if formal methods can help this problem. He defines formal methods as mathematical algorithmic techniques for modeling, design, and analysis. Formal methods fall under three categories: specification (what the system must or must not do), verification (why the system does or does not meet specifications), and synthesis (how the system meets the specifications). Due to the industry need for higher assurance, there is increasing interest in formal methods and verified AI. Much of his talk focused on application in cyber-physical systems that use ML-based perception (CPSML). 
+
+One of the key challenges of verified AI is identifying if the systems and the environment satisfy the specifications. There is a major environmental modeling challenge, because it is impossible to represent all possible environmental scenarios in a training set. Another challenge comes with modeling learning systems that have high-dimensional input and state spaces. In these cases, simply coming up with the inputs to the verification problem is difficult. Such systems, Dr. Seshia says, need new methods for abstraction and modular reasoning.
+
+Dr. Seshia proposed key design principles for a number of challenges facing verified AI. These became the core focus of the discussion. Each of these challenges was discussed in the context of designing a closed-loop CPSML and will be explored in additional detail below.
+
+The first challenge that was discussed was formal specification. The proposed principles are starting with system-level specifications and then deriving component specifications. His example was automatic emergency braking systems (AEBS). The goal of these systems is to brake when an obstacle is near while maintaining a minimum safety distance. It requires perception in the form of object detection and classification based on deep neural networks (DNNs). By using system-level specifications, one can verify the system containing the DNN and formally specify the end-to-end behavior of the system. Component level specifications address different metrics: robustness, input-output relations, monotonicity, fairness, and coverage. 
+
+The second challenge Dr. Seshia discussed was the scalability of verification. His proposed principles are compositional simulation-based verification (i.e. falsification) and algorithmic improvisation. It is important to have compositional falsification of CPSMLs. However, this is difficult due to the high dimensionality of the systems' input space. Dr. Seshia suggested reducing the CPSML falsification problem to a combination of CPS falsification and ML analysis. For the former, simulation-based temporal logic falsification is used and for the latter, systematic exploration of "semantic feature space" is used. This approach also may generate counterexamples that can be used to augment the accuracy and adaptability of the system. It is worth noting that, at this point, Dr. Seshia began running out of time and wasn't able to go into the remaining challenges and principles with as much detail. 
+
+The third challenge regarded how to redesign learning components for correctness. He suggested using oracle-guided inductive synthesis and run-time reasurrance. In other words, he suggested combining a learner (i.e. the ML algorithm) with an oracle (i.e. a verifer) that could answer the learner's queries while satisfying formal specifications. He presented data on a DNN that indicated a significant increase in accuracy that oracle-guided inductive synthesis allowed. 
+
+The fourth challenge was about environmental modeling and capturing assumptions. The proposed principles were being data-driven, introspective, and using stoachastic modeling. One example he gave was the process of generating meaningful sensor data. In the large and unstructured input space that is the real world, we want scenes that make physical sense and are interesting and useful for training, testing, or design. He suggested scene improvisation as a way to accomplish this. Namely, SCENIC is a scenario description language that can be used to generate such data. 
+
+The fifth and final challenge was learning systems representation. Dr. Seshia's proposed principles are abstraction, semantic feature analysis, and explanations. At this point, the allotted time for the seminar was over and Dr. Seshia was not able to go into additional detail regarding the challenge. 
+
+This seminar made me think about all of the problems and difficulties that are associated with machine learning and artifical intelligence. The terms are such major buzzwords that it seems like every researcher and company is trying to use ML and/or AI to augment their endeavors. However, Dr. Seshia pointed out that the field is so new and complicated that there are very few formal guidelines on how to effectively and efficiently solve such problems. His proposed principles to common challenges that AI developers face provided great insight on the sheer scope and difficulty of said problems. There is no easy and straightforward solution. However, providing a solid framework will hopefully make addressing these challenges more manageable and accessable for an increasing number of people. 
+
+Dr. Seshia's talk was geared towards people who have a significantly greater understanding of ML/AI than I do. As a result, my questions are relatively high-level. That being said, if given the chance, I would ask the following two questions:
+
+1) Would you consider these guidelines to be comprehensive? What is the biggest challenge facing ML/AI (verification) that you have not yet addressed? Is there a situation in which your proposed principles would fail? 
+
+2) This is more of an opinion question, but what is your personal stance on the Uber accident? Should the blame be placed on the algorithm(s), the driver, the victim, or Uber? Was there a lack of sufficient training data or too much reliance on an imperfect algorithm? Do you believe that your proposed principles may have aided in verifying the system in such a manner as to prevent the accident? 
+
